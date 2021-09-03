@@ -3,9 +3,15 @@ import Layout from './layout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { HomePage, InvoicePage, NotFound } from './pages';
 import { useEffect } from 'react';
+import { useActions } from './hooks';
 
 function App() {
-  useEffect(() => {}, []);
+  const { getInvoices } = useActions();
+
+  useEffect(() => {
+    getInvoices();
+  }, [getInvoices]);
+
   return (
     <Router>
       <Layout>

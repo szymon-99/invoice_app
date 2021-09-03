@@ -7,7 +7,7 @@ module.exports = {
     },
     colors: {
       primary: 'var(--color-primary-bg)',
-      primarySoft: 'var(--color-primary-soft)',
+      primarySoft: 'var(--color-primary-bg-soft)',
       primaryLight: 'var(--color-primary-light)',
       nav: 'var(--nav-color)',
       summary: 'var(--summary-color)',
@@ -27,7 +27,9 @@ module.exports = {
       orange: 'var(--orange)',
       green: 'var(--green)',
       gray: 'var(--gray)',
+      lightGray: 'var(--dark-100)',
       white: 'var(--white)',
+      optionBg: 'var(--option-bg)',
     },
     extend: {
       fontSize: {
@@ -55,7 +57,9 @@ module.exports = {
   },
   variants: {
     extend: {
-      ringWidth: ['hover', 'focus-visible'],
+      ringWidth: ['hover', 'focus-visible', 'group-hover'],
+      height: ['group-hover'],
+      scale: ['group-hover'],
     },
   },
   plugins: [require('@tailwindcss/forms')],

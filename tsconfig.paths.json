@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@shared": ["./components/shared/index"]
+      "@shared": ["./components/shared/index"],
+      "@hooks": ["./hooks/index"],
+      "@utils/*": ["./utils/*"]
     }
   }
 }
