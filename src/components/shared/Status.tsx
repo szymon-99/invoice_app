@@ -12,19 +12,13 @@ type ColorClasses = {
 const Status: FC<StatusProps> = ({ status }) => {
   const colors: ColorClasses = {
     pending: 'orange',
-    draft: 'lightGray',
+    draft: 'optionBgLight',
     paid: 'green',
   };
 
   return (
     <div
-      className={`rounded-md text-xs bg-${colors[status]}  text-${
-        colors[status]
-      } ${
-        status === 'draft'
-          ? 'dark:bg-blue-100 dark:bg-opacity-10  dark:text-fontPrimary'
-          : null
-      } bg-opacity-10 font-bold capitalize self-end  py-3 min-w-28 flex items-center justify-center md:self-auto`}
+      className={`rounded-md text-xs bg-${colors[status]}  text-${colors[status]} bg-opacity-10 font-bold capitalize self-end  py-3 min-w-28 flex items-center justify-center md:self-auto`}
     >
       <span className='text-base mr-2'>
         <GoPrimitiveDot />

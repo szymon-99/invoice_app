@@ -43,7 +43,7 @@ const FilterButton = () => {
             transition={{
               duration: 0.2,
             }}
-            className='absolute z-10 w-40 top-0 mt-9 p-6 md:w-full  shadow-lg rounded-lg bg-primaryLight'
+            className='absolute z-10 w-40 top-0 mt-9 p-6 md:w-full shadow-xl rounded-lg bg-invoiceCell'
           >
             {filterOptions.map((option) => {
               return (
@@ -53,7 +53,7 @@ const FilterButton = () => {
                   onClick={() => setValue(option)}
                 >
                   <span
-                    className={`flex justify-center items-center w-4 h-4 mr-4 ring-btnPrimary group-hover:ring-1 rounded-sm ${
+                    className={`flex justify-center items-center w-4 h-4 mr-4 ring-btnPrimary group-hover:ring-1 transition-all duration-300 rounded-sm ${
                       option === value ? 'bg-btnPrimary' : 'bg-optionBg'
                     }`}
                   >

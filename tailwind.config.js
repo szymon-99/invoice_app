@@ -24,12 +24,14 @@ module.exports = {
       lightBlue: 'var(--light-blue)',
       red: 'var(--red-500)',
       redHover: 'var(--red-100)',
-      orange: 'var(--orange)',
-      green: 'var(--green)',
+      orange: '#ff8f00',
+      green: '#33d69f',
       gray: 'var(--gray)',
       lightGray: 'var(--dark-100)',
       white: 'var(--white)',
       optionBg: 'var(--option-bg)',
+      optionBgLight: '#373b53',
+      invoiceCell: 'var(--invoice-cell)',
     },
     extend: {
       fontSize: {

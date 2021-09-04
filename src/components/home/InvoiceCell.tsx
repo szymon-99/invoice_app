@@ -5,36 +5,44 @@ import { FC } from 'react';
 import { InvoiceBasicInfo } from '../../../types';
 import { motion } from 'framer-motion';
 
-const item = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      type: 'Spring',
-      damping: 0,
-      stiffness: 0,
-    },
-  },
-};
+interface InvoiceCellProps extends InvoiceBasicInfo {
+  index: number;
+}
 
-const InvoiceCell: FC<InvoiceBasicInfo> = ({
+const InvoiceCell: FC<InvoiceCellProps> = ({
   id,
   name,
   status,
   price,
   date,
+  index,
 }) => {
   const history = useHistory();
 
   return (
     <motion.li
       onClick={() => history.push(`/invoices/${id}`)}
+      onKeyPress={() => history.push(`/invoices/${id}`)}
       tabIndex={0}
-      layout
-      variants={item}
-      className='py-4 px-6 cursor-pointer text-left  bg-white rounded-lg dark:bg-dark-100 transition duration-300 md:flex md:items-center hover:ring-1 ring-blue-300 focus:ring-1 focus:outline-none shadow-1'
+      initial={{ opacity: 0, y: 10 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          delay: index * 0.1,
+          easings: ['easeInOut'],
+        },
+      }}
+      exit={{
+        opacity: 0,
+        y: 10,
+        transition: {
+          delay: index * 0.06,
+          duration: 0.25,
+          easings: ['easeIn'],
+        },
+      }}
+      className='py-4 px-6 cursor-pointer text-left bg-invoiceCell rounded-lg  transition duration-300 md:flex md:items-center hover:ring-1 ring-btnPrimary focus:ring-1 focus:outline-none shadow-1'
     >
       <div className='flex justify-between'>
         <h3>
@@ -55,15 +63,17 @@ const InvoiceCell: FC<InvoiceBasicInfo> = ({
               .join(' ')
               .replace(',', '')}
           </p>
-          <p className='hidden md:block md:flex-grow'>{name}</p>
-          <p className=' mt-2 font-bold text-sm md:text-base text-dark-900 dark:text-white md:mt-0  '>
+          <p className='hidden text-fontSecondary md:block md:flex-grow'>
+            {name}
+          </p>
+          <p className=' mt-2 font-bold text-sm md:text-base text-fontPrimary md:mt-0  '>
             {`$${price}`}
           </p>
         </div>
         <Status status={status} />
       </div>
 
-      <span className='hidden  ml-5 text-base text-blue-300 md:inline'>
+      <span className='hidden  ml-5 text-lg text-btnPrimary md:inline'>
         <FiChevronRight />
       </span>
     </motion.li>

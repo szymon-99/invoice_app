@@ -1,4 +1,5 @@
 import { useActions } from '@hooks';
+import { motion } from 'framer-motion';
 import { FaPlus } from 'react-icons/fa';
 import FilterButton from './FilterButton';
 import InvoiceCounter from './InvoiceCounter';
@@ -7,7 +8,26 @@ const ControlPanel = () => {
   const { openForm } = useActions();
 
   return (
-    <div className='grid grid-cols-3 items-center max-w-full'>
+    <motion.div
+      initial={{ x: -25, opacity: 0 }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.35,
+          easings: ['easeIn'],
+        },
+      }}
+      exit={{
+        opacity: 0,
+        x: 25,
+        transition: {
+          duration: 0.35,
+          easings: ['easeOut'],
+        },
+      }}
+      className='grid grid-cols-3 items-center max-w-full'
+    >
       <div>
         <h1>Invoices</h1>
 
@@ -27,7 +47,7 @@ const ControlPanel = () => {
           New <span className='hidden md:inline'>Invoice</span>
         </span>
       </button>
-    </div>
+    </motion.div>
   );
 };
 

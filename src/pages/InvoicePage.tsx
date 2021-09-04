@@ -1,5 +1,9 @@
 const InvoicePage = () => {
-  return <h1>InvoicePage</h1>;
+  return (
+    <div className=' mt-12 max-w-90vw mx-auto  md:w-full md:max-w-4xl md:px-4 md:h-full md:mt-0'>
+      <h1>Invoice Page</h1>
+    </div>
+  );
 };
 
 export default InvoicePage;

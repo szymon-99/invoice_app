@@ -7,7 +7,7 @@ const Layout: FC = ({ children }) => {
 
   return (
     <div
-      className={`transition font-spartan h-full w-full pt-20 md:h-screen md:pl-24 bg-primary ${
+      className={`transition font-spartan h-full w-full pt-20  md:pl-24 bg-primary ${
         theme ? 'theme-light' : 'theme-dark'
       }`}
     >

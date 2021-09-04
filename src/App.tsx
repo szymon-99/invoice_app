@@ -1,33 +1,35 @@
 import './index.css';
 import Layout from './layout';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import { HomePage, InvoicePage, NotFound } from './pages';
 import { useEffect } from 'react';
 import { useActions } from './hooks';
+import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const { getInvoices } = useActions();
+  const location = useLocation();
 
   useEffect(() => {
     getInvoices();
   }, [getInvoices]);
 
   return (
-    <Router>
-      <Layout>
-        <Switch>
+    <Layout>
+      <AnimatePresence exitBeforeEnter>
+        <Switch location={location} key={location.pathname}>
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route path='/invoice/:id'>
+          <Route path='/invoices/:id'>
             <InvoicePage />
           </Route>
           <Route path='*'>
             <NotFound />
           </Route>
         </Switch>
-      </Layout>
-    </Router>
+      </AnimatePresence>
+    </Layout>
   );
 }
 

@@ -34,6 +34,7 @@
   --btn-dark: var(--dark-100);
   --btn-dark-hover: var(--dark-300);
   --option-bg: var(--blue-100);
+  --invoice-cell: var(--white);
 }
 .theme-dark {
   --color-primary-bg: var(--dark-400);
@@ -49,6 +50,7 @@
   --btn-dark: var(--dark-900);
   --btn-dark-hover: var(--dark-400);
   --option-bg: var(--dark-400);
+  --invoice-cell: var(--dark-300);
 }
 
 @tailwind base;
