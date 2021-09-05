@@ -29,8 +29,8 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         opacity: 1,
         y: 0,
         transition: {
-          delay: index * 0.1,
-          easings: ['easeInOut'],
+          delay: index * 0.09,
+          easings: ['easeOut'],
         },
       }}
       exit={{
@@ -42,7 +42,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
           easings: ['easeIn'],
         },
       }}
-      className='py-4 px-6 cursor-pointer text-left bg-invoiceCell rounded-lg  transition duration-300 md:flex md:items-center hover:ring-1 ring-btnPrimary focus:ring-1 focus:outline-none shadow-1'
+      className='py-4 px-6 cursor-pointer text-left bg-primaryLight rounded-lg  transition duration-300 md:flex md:items-center hover:ring-1 ring-blue-500 focus:ring-1 focus:outline-none shadow-1'
     >
       <div className='flex justify-between'>
         <h3>
@@ -53,7 +53,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
       </div>
 
       <div className='mt-6 flex justify-between items-center md:ml-7 md:mt-0 md:grid  md:grid-cols-12 md:gap-8  '>
-        <div className='grid md:col-span-9 md:flex md:items-center md:space-x-8'>
+        <div className='grid  md:col-span-9 md:flex md:items-center md:space-x-8'>
           <p className=' md:justify-self-start'>
             Due{' '}
             {new Date(date)
@@ -73,7 +73,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         <Status status={status} />
       </div>
 
-      <span className='hidden  ml-5 text-lg text-btnPrimary md:inline'>
+      <span className='hidden  ml-5 text-lg text-blue-500 md:inline'>
         <FiChevronRight />
       </span>
     </motion.li>

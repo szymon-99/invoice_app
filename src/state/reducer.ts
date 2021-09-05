@@ -8,6 +8,7 @@ export interface AppState {
   currentInvoice: InvoiceApiResponse | null;
   isEditing: boolean;
   isLoading: boolean;
+  isFormOpen: boolean;
   filterMethod: FilterOptions;
   errors: null | string;
 }
@@ -16,12 +17,14 @@ const initialState: AppState = {
   sortedInvoices: [],
   currentInvoice: null,
   isEditing: false,
+  isFormOpen: false,
   isLoading: true,
   filterMethod: 'all',
   errors: null,
 };
 
 export const reducer = (state = initialState, action: Action): AppState => {
+  state.errors = null;
   if (action.type === ActionType.GET_INVOICES) {
     return {
       ...state,

@@ -3,11 +3,12 @@ import Layout from './layout';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { HomePage, InvoicePage, NotFound } from './pages';
 import { useEffect } from 'react';
-import { useActions } from './hooks';
+import { useActions, useAppSelector } from './hooks';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {
   const { getInvoices } = useActions();
+  const { isFormOpen } = useAppSelector();
   const location = useLocation();
 
   useEffect(() => {

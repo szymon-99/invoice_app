@@ -9,14 +9,14 @@ const Button: FC<ButtonProps> = ({ children, type, callback }) => {
   return (
     <button
       onClick={() => callback()}
-      className={`px-6 py-4  text-xs leading-4 rounded-3xl font-bold transition focus hover:opacity-90  ${
+      className={`px-6 py-4  text-xs leading-4 rounded-3xl font-bold transition focus ${
         type === 'danger'
-          ? ' text-white bg-red hover:bg-redHover'
+          ? 'text-white bg-red-500 hover:bg-red-100'
           : type === 'primary'
-          ? 'text-white bg-btnPrimary hover:bg-btnPrimaryHover  '
+          ? 'text-white bg-blue-500 hover:bg-blue-300'
           : type === 'dark'
-          ? 'bg-btnDark text-white hover:bg-btnDarkHover'
-          : 'text-fontSecondary bg-btnLight hover:bg-btnSecondaryHover'
+          ? 'bg-dark-200 text-gray hover:bg-dark-900 dark:hover:bg-dark-400 dark:hover:text-blue-100'
+          : 'text-blue-600 dark:text-blue-100 bg-blue-100 hover:bg-blue-100 hover:bg-opacity-50  dark:bg-dark-100 dark:hover:bg-white dark:hover:text-blue-600'
       }`}
     >
       {children}

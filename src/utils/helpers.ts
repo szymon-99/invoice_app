@@ -26,3 +26,7 @@ export const formatQty = (qty: string): string => {
 
   return result;
 };
+
+export const formatDate = (date: Date): string => {
+  return date.toUTCString().split(' ').splice(0, 3).join(' ').replace(',', '');
+};

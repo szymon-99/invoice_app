@@ -2,55 +2,25 @@
 
 :root {
   --blue-100: #dfe3fa;
-  --blue-300: #9277ff;
-  --blue-500: #7c5dfa;
   --blue-600: #7e88c3;
-  --dark-100: #373b53;
-  --dark-200: #252945;
   --dark-300: #1e2139;
   --dark-400: #141625;
   --dark-900: #0c0e16;
   --white: #ffffff;
   --light: #f8f8f8;
-  --light-blue: #f9fafe;
-  --gray: #888eb0;
-  --red-100: #ff9797;
-  --red-500: #ec5757;
-  --green: #33d69f;
-  --orange: #ff8f00;
 }
 
-.theme-light {
+.light {
   --color-primary-bg: var(--light);
-  --color-primary-bg-soft: var(--white);
-  --color-primary-light: var(--light-blue);
-  --nav-color: var(--dark-200);
-  --summary-color: var(--dark-200);
+  --color-primary-light: var(--white);
   --font-primary: var(--dark-900);
   --font-secondary: var(--blue-600);
-  --btn-secondary: var(--dark-200);
-  --btn-light: var(--light-blue);
-  --btn-light-hover: var(--blue-600);
-  --btn-dark: var(--dark-100);
-  --btn-dark-hover: var(--dark-300);
-  --option-bg: var(--blue-100);
-  --invoice-cell: var(--white);
 }
-.theme-dark {
+.dark {
   --color-primary-bg: var(--dark-400);
-  --color-primary-bg-soft: var(--dark-300);
-  --color-primary-light: var(--dark-200);
-  --nav-color: var(--dark-300);
-  --summary-color: var(--dark-900);
+  --color-primary-light: var(--dark-300);
   --font-primary: var(--white);
   --font-secondary: var(--blue-100);
-  --btn-secondary: var(--dark-900);
-  --btn-light: var(--dark-200);
-  --btn-light-hover: var(--gray);
-  --btn-dark: var(--dark-900);
-  --btn-dark-hover: var(--dark-400);
-  --option-bg: var(--dark-400);
-  --invoice-cell: var(--dark-300);
 }
 
 @tailwind base;
@@ -73,7 +43,7 @@
 
 @layer components {
   .focus {
-    @apply focus:outline-none focus-visible:ring-2 ring-btnPrimary;
+    @apply focus:outline-none focus-visible:ring-2 ring-blue-500;
   }
   .box {
     @apply mt-28 max-w-90vw mx-auto  md:w-full md:max-w-3xl md:mt-20 md:px-4 md:h-full;

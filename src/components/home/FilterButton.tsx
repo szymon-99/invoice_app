@@ -26,7 +26,7 @@ const FilterButton = () => {
         Filter
         <span className='hidden  md:ml-1 md:inline'> by status</span>
         <span
-          className={`text-xl font-bold -mt-1 ml-1 text-btnPrimary transition duration-300 transform group-hover:scale-125 ${
+          className={`text-xl font-bold -mt-1 ml-1 text-blue-500 transition duration-300 transform group-hover:scale-125 ${
             show && 'rotate-180'
           } `}
         >
@@ -43,7 +43,7 @@ const FilterButton = () => {
             transition={{
               duration: 0.2,
             }}
-            className='absolute z-10 w-40 top-0 mt-9 p-6 md:w-full shadow-xl rounded-lg bg-invoiceCell'
+            className='absolute z-10 w-40 top-0 mt-9 p-6 md:w-full shadow-xl rounded-lg bg-primaryLight'
           >
             {filterOptions.map((option) => {
               return (
@@ -53,8 +53,10 @@ const FilterButton = () => {
                   onClick={() => setValue(option)}
                 >
                   <span
-                    className={`flex justify-center items-center w-4 h-4 mr-4 ring-btnPrimary group-hover:ring-1 transition-all duration-300 rounded-sm ${
-                      option === value ? 'bg-btnPrimary' : 'bg-optionBg'
+                    className={`flex justify-center items-center w-4 h-4 mr-4 ring-blue-500 group-hover:ring-1 transition-all duration-300 rounded-sm ${
+                      option === value
+                        ? 'bg-blue-500'
+                        : ' bg-blue-100 dark:bg-dark-400'
                     }`}
                   >
                     {option === value && (
