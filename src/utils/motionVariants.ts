@@ -30,6 +30,7 @@ export const slideUp = {
     transition: {
       duration: 0.4,
       easings: 'easeIn',
+      delay: 0.2,
     },
   },
   exit: {

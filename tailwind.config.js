@@ -56,11 +56,15 @@ module.exports = {
       inset: {
         18: '4.5rem',
       },
+      animation: {
+        loading: 'spin .7s ease-in-out infinite',
+      },
     },
   },
   variants: {
     extend: {
       ringWidth: ['hover', 'focus-visible', 'group-hover'],
+      animation: ['group-hover'],
       height: ['group-hover'],
       scale: ['group-hover'],
     },

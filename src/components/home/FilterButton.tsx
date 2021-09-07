@@ -9,11 +9,12 @@ const FilterButton = () => {
   const [value, setValue] = useState<FilterOptions>(filterOptions[0]);
   const [show, setShow] = useState(false);
   const radioRef = useRef<HTMLDivElement>(null);
-  const { setFilter } = useActions();
+  const { setFilter, sortInvoices } = useActions();
 
   useEffect(() => {
     setFilter(value);
-  }, [value, setFilter]);
+    sortInvoices();
+  }, [value, setFilter, sortInvoices]);
 
   useClickOutside(setShow, radioRef);
 

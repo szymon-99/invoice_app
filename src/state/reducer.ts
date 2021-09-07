@@ -49,12 +49,12 @@ export const reducer = (state = initialState, action: Action): AppState => {
       return {
         ...state,
         errors: "Invoice doesn't exist",
+        isLoading: false,
       };
     }
     return {
       ...state,
       currentInvoice,
-      isLoading: false,
     };
   }
   if (action.type === ActionType.START_EDITING) {
@@ -79,11 +79,9 @@ export const reducer = (state = initialState, action: Action): AppState => {
     }
     return {
       ...state,
-      sortedInvoices: [
-        ...state.invoices.filter(
-          (invoice) => invoice.status === state.filterMethod
-        ),
-      ],
+      sortedInvoices: state.invoices.filter(
+        (invoice) => invoice.status === state.filterMethod
+      ),
     };
   }
   if (action.type === ActionType.START_LOADING) {

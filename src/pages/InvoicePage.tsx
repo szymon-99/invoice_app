@@ -4,7 +4,7 @@ import {
   EditButtons,
   InvoiceInfo,
 } from '@components/invoiceView';
-import { ErrorMessage } from '@shared';
+import { Back, ErrorMessage, Loading } from '@shared';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { motion } from 'framer-motion';
@@ -13,28 +13,42 @@ import { slideUp } from '@utils/motionVariants';
 const InvoicePage = () => {
   const { id } = useParams<{ id: string }>();
   const { setCurrentInvoice } = useActions();
-  const { invoices, currentInvoice, isLoading } = useAppSelector();
+  const { currentInvoice, isLoading, errors } = useAppSelector();
 
   useEffect(() => {
-    if (invoices.length) {
+    if (!isLoading) {
       setCurrentInvoice(id);
     }
-  }, [id, setCurrentInvoice, invoices]);
+  }, [id, setCurrentInvoice, isLoading]);
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return <Loading />;
   }
 
   return (
     <div className=' mt-12 mb-20 max-w-90vw mx-auto  md:w-full md:max-w-4xl md:px-4 md:h-full md:mt-0'>
-      {currentInvoice ? (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{
+          x: -30,
+          opacity: 0,
+          transition: {
+            duration: 0.35,
+          },
+        }}
+      >
+        <Back />
+      </motion.div>
+
+      {currentInvoice && (
         <>
           <InvoiceControl />
           <InvoiceInfo />
         </>
-      ) : (
-        <ErrorMessage />
       )}
+
+      {errors && <ErrorMessage />}
 
       {/* to show fixed buttons on mobile devices */}
       <motion.div

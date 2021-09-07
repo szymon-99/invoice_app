@@ -1,16 +1,10 @@
 import InvoiceCell from './InvoiceCell';
 import { InvoiceBasicInfo } from '../../../types';
-import { useAppSelector, useActions } from '@hooks';
-import { useEffect } from 'react';
+import { useAppSelector } from '@hooks';
 import { motion } from 'framer-motion';
 
 export default function InvoicesGrid() {
-  const { sortedInvoices, filterMethod } = useAppSelector();
-  const { sortInvoices } = useActions();
-
-  useEffect(() => {
-    sortInvoices();
-  }, [filterMethod, sortInvoices]);
+  const { sortedInvoices } = useAppSelector();
 
   const invoices: InvoiceBasicInfo[] = sortedInvoices.map((invoice) => {
     const {

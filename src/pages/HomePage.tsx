@@ -1,15 +1,12 @@
 import { ControlPanel, InvoicesGrid, EmptyView } from '../components/home';
 import { useAppSelector } from '@hooks';
+import { Loading } from '@shared';
 
 const HomePage = () => {
   const { sortedInvoices, isLoading } = useAppSelector();
 
   if (isLoading) {
-    return (
-      <main className='flex justify-center items-center h-96'>
-        <p>Loading...</p>
-      </main>
-    );
+    return <Loading />;
   }
 
   return (

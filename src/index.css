@@ -2,6 +2,7 @@
 
 :root {
   --blue-100: #dfe3fa;
+  --blue-500: #7c5dfa;
   --blue-600: #7e88c3;
   --dark-300: #1e2139;
   --dark-400: #141625;
@@ -47,5 +48,9 @@
   }
   .box {
     @apply mt-28 max-w-90vw mx-auto  md:w-full md:max-w-3xl md:mt-20 md:px-4 md:h-full;
+  }
+  .loading {
+    border-color: var(--blue-500);
+    border-top-color: var(--font-primary);
   }
 }
