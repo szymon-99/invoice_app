@@ -1,6 +1,6 @@
 import { InvoiceApiResponse, FilterOptions } from '../../types';
 import { ActionType } from './action-types';
-import { Action } from './actions';
+import { AppAction } from './actions';
 
 export interface AppState {
   invoices: InvoiceApiResponse[];
@@ -23,7 +23,7 @@ const initialState: AppState = {
   errors: null,
 };
 
-export const reducer = (state = initialState, action: Action): AppState => {
+export const reducer = (state = initialState, action: AppAction): AppState => {
   state.errors = null;
   if (action.type === ActionType.GET_INVOICES) {
     return {
@@ -33,10 +33,10 @@ export const reducer = (state = initialState, action: Action): AppState => {
       isLoading: false,
     };
   }
-  if (action.type === ActionType.EDIT_INVOICE) {
+  if (action.type === ActionType.UPDATE_INVOICE) {
     return {
       ...state,
-      currentInvoice: action.payload.editedInvoice,
+      currentInvoice: action.payload.updatedInvoice,
       isLoading: false,
       isEditing: false,
     };
@@ -86,6 +86,12 @@ export const reducer = (state = initialState, action: Action): AppState => {
   }
   if (action.type === ActionType.START_LOADING) {
     return { ...state, isLoading: true };
+  }
+  if (action.type === ActionType.OPEN_FORM) {
+    return { ...state, isFormOpen: true };
+  }
+  if (action.type === ActionType.CLOSE_FORM) {
+    return { ...state, isFormOpen: false };
   }
   return state;
 };

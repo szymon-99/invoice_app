@@ -4,7 +4,7 @@ import { ActionType } from './action-types';
 import {
   AddInvoiceAction,
   CloseFormAction,
-  EditInvoiceAction,
+  UpdateInvoiceAction,
   GetInvoicesAction,
   SetCurrentInvoiceAction,
   SetFilterAction,
@@ -50,19 +50,19 @@ export const addInvoice =
     } catch (error) {}
   };
 
-export const editInvoice =
-  (invoiceToEdit: InvoiceApiResponse): AppThunk<EditInvoiceAction> =>
+export const updateInvoice =
+  (invoiceToUpdate: InvoiceApiResponse): AppThunk<UpdateInvoiceAction> =>
   async (dispatch) => {
     try {
-      const { data: editedInvoice } = await axios.patch<InvoiceApiResponse>(
+      const { data: updatedInvoice } = await axios.patch<InvoiceApiResponse>(
         `${process.env.REACT_APP_API_URL}`,
-        invoiceToEdit
+        invoiceToUpdate
       );
 
       dispatch({
-        type: ActionType.EDIT_INVOICE,
+        type: ActionType.UPDATE_INVOICE,
         payload: {
-          editedInvoice,
+          updatedInvoice,
         },
       });
     } catch (error) {}

@@ -29,7 +29,13 @@ const InvoicePage = () => {
     <div className=' mt-12 mb-20 max-w-90vw mx-auto  md:w-full md:max-w-4xl md:px-4 md:h-full md:mt-0'>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{
+          opacity: 1,
+          transition: {
+            duration: 0.4,
+            delay: 0.2,
+          },
+        }}
         exit={{
           x: -30,
           opacity: 0,

@@ -25,8 +25,8 @@ const ControlPanel = () => {
       <FilterButton />
 
       <button
-        onClick={openForm}
-        className='rounded-3xl p-1.5 bg-blue-500 transform hover:bg-opacity-80 hover:scale-105 transition text-xs font-bold flex items-center justify-self-end md:p-2 focus '
+        onClick={() => openForm()}
+        className='rounded-3xl p-1.5 bg-blue-500 transition transform hover:bg-opacity-80 hover:scale-105 text-xs font-bold flex items-center justify-self-end md:p-2 focus '
       >
         <span className=' p-2 md:p-3 rounded-full bg-white mr-2  md:mr-4'>
           <FaPlus className='text-blue-500 ' />

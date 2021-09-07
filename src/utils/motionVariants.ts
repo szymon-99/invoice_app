@@ -42,3 +42,28 @@ export const slideUp = {
     },
   },
 };
+
+export const formVariants = {
+  hidden: {
+    x: '-100%',
+  },
+  show: {
+    x: 0,
+    transition: {
+      // duration: 0.6,
+      // easings: 'easeIn',
+      // delay: 0.2,
+      duration: 1,
+      type: 'spring',
+      bounce: 0.1,
+    },
+  },
+  exit: {
+    x: '-100%',
+    transition: {
+      duration: 1,
+      type: 'spring',
+      bounce: 0.1,
+    },
+  },
+};

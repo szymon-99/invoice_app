@@ -53,4 +53,7 @@
     border-color: var(--blue-500);
     border-top-color: var(--font-primary);
   }
+  .btn {
+    @apply px-6 py-4  text-xs leading-4 rounded-3xl font-bold transition focus;
+  }
 }

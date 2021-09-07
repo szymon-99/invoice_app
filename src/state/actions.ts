@@ -3,7 +3,7 @@ import { InvoiceApiResponse, FilterOptions } from '../../types';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from 'state';
 
-export type AppThunk<T extends Action> = ThunkAction<
+export type AppThunk<T extends AppAction> = ThunkAction<
   void,
   RootState,
   unknown,
@@ -52,14 +52,14 @@ export interface SetCurrentInvoiceAction {
     id: string;
   };
 }
-export interface EditInvoiceAction {
-  type: ActionType.EDIT_INVOICE;
+export interface UpdateInvoiceAction {
+  type: ActionType.UPDATE_INVOICE;
   payload: {
-    editedInvoice: InvoiceApiResponse;
+    updatedInvoice: InvoiceApiResponse;
   };
 }
 
-export type Action =
+export type AppAction =
   | OpenFormAction
   | CloseFormAction
   | AddInvoiceAction
@@ -69,5 +69,5 @@ export type Action =
   | GetInvoicesAction
   | SortInvoiceAction
   | StartLoadingAction
-  | EditInvoiceAction
+  | UpdateInvoiceAction
   | SetFilterAction;

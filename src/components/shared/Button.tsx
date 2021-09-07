@@ -9,7 +9,7 @@ const Button: FC<ButtonProps> = ({ children, type, callback }) => {
   return (
     <button
       onClick={() => callback()}
-      className={`px-6 py-4  text-xs leading-4 rounded-3xl font-bold transition focus ${
+      className={`btn ${
         type === 'danger'
           ? 'text-white bg-red-500 hover:bg-red-100'
           : type === 'primary'
