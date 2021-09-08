@@ -58,10 +58,7 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
     };
   }
   if (action.type === ActionType.START_EDITING) {
-    return { ...state, isEditing: true };
-  }
-  if (action.type === ActionType.STOP_EDITING) {
-    return { ...state, isEditing: false };
+    return { ...state, isEditing: true, isFormOpen: true };
   }
   if (action.type === ActionType.ADD_INVOICE) {
     return {
@@ -91,7 +88,7 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
     return { ...state, isFormOpen: true };
   }
   if (action.type === ActionType.CLOSE_FORM) {
-    return { ...state, isFormOpen: false };
+    return { ...state, isFormOpen: false, isEditing: false };
   }
   return state;
 };

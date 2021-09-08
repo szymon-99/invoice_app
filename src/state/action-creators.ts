@@ -1,5 +1,9 @@
 import axios from 'axios';
-import { FilterOptions, InvoiceApiResponse } from '../../types';
+import {
+  FilterOptions,
+  InvoiceApiResponse,
+  InvoiceClientInformations,
+} from '../../types';
 import { ActionType } from './action-types';
 import {
   AddInvoiceAction,
@@ -11,7 +15,6 @@ import {
   SortInvoiceAction,
   StartEditingAction,
   StartLoadingAction,
-  StopEditingAction,
   OpenFormAction,
   AppThunk,
 } from './actions';
@@ -33,7 +36,7 @@ export const getInvoices =
   };
 
 export const addInvoice =
-  (invoice: InvoiceApiResponse): AppThunk<AddInvoiceAction> =>
+  (invoice: InvoiceClientInformations): AppThunk<AddInvoiceAction> =>
   async (dispatch) => {
     try {
       const { data: newInvoice } = await axios.post<InvoiceApiResponse>(
@@ -51,7 +54,7 @@ export const addInvoice =
   };
 
 export const updateInvoice =
-  (invoiceToUpdate: InvoiceApiResponse): AppThunk<UpdateInvoiceAction> =>
+  (invoiceToUpdate: InvoiceClientInformations): AppThunk<UpdateInvoiceAction> =>
   async (dispatch) => {
     try {
       const { data: updatedInvoice } = await axios.patch<InvoiceApiResponse>(
@@ -81,10 +84,6 @@ export const setCurrentInvoice = (id: string): SetCurrentInvoiceAction => ({
 
 export const startEditing = (): StartEditingAction => ({
   type: ActionType.START_EDITING,
-});
-
-export const stopEditing = (): StopEditingAction => ({
-  type: ActionType.STOP_EDITING,
 });
 
 export const startLoading = (): StartLoadingAction => ({

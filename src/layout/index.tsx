@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import { useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, useEffect } from 'react';
 import Navbar from './Navbar';
+import { useAppSelector } from '@hooks';
 
 const Layout: FC = ({ children }) => {
   const [darkTheme, setDarkTheme] = useState(false);
+  const { isFormOpen } = useAppSelector();
 
   useLayoutEffect(() => {
     if (
@@ -28,6 +30,14 @@ const Layout: FC = ({ children }) => {
       document.documentElement.classList.remove('dark');
     }
   }, [darkTheme]);
+
+  useEffect(() => {
+    if (isFormOpen) {
+      document.body.classList.add('scrollLock');
+    } else {
+      document.body.classList.remove('scrollLock');
+    }
+  }, [isFormOpen]);
 
   const toggleTheme = () => {
     if (!darkTheme) {

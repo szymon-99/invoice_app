@@ -50,10 +50,7 @@ export const formVariants = {
   show: {
     x: 0,
     transition: {
-      // duration: 0.6,
-      // easings: 'easeIn',
-      // delay: 0.2,
-      duration: 1,
+      duration: 0.8,
       type: 'spring',
       bounce: 0.1,
     },
@@ -61,7 +58,7 @@ export const formVariants = {
   exit: {
     x: '-100%',
     transition: {
-      duration: 1,
+      duration: 0.8,
       type: 'spring',
       bounce: 0.1,
     },

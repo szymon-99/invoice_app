@@ -33,11 +33,12 @@ const TextInput: FC<TextInputProps> = ({
   // }
 
   return (
-    <div className={`${itemList ? 'mt-0' : 'mt-4'}`}>
+    <div className={` mt-4 ${itemList && 'md:mt-0'}`}>
       <div className='flex justify-between'>
         <label
           htmlFor={field.name}
-          className='font-medium transition capitalize text-blue-600 dark:text-blue-100 text-xs'
+          className={`font-medium transition capitalize text-blue-600 dark:text-blue-100 text-xs
+          ${itemList && 'md:hidden'}`}
         >
           {label}
         </label>

@@ -1,5 +1,9 @@
 import { ActionType } from './action-types';
-import { InvoiceApiResponse, FilterOptions } from '../../types';
+import {
+  InvoiceApiResponse,
+  FilterOptions,
+  InvoiceClientInformations,
+} from '../../types';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from 'state';
 
@@ -25,9 +29,7 @@ export interface GetInvoicesAction {
 export interface StartEditingAction {
   type: ActionType.START_EDITING;
 }
-export interface StopEditingAction {
-  type: ActionType.STOP_EDITING;
-}
+
 export interface StartLoadingAction {
   type: ActionType.START_LOADING;
 }
@@ -65,7 +67,6 @@ export type AppAction =
   | AddInvoiceAction
   | SetCurrentInvoiceAction
   | StartEditingAction
-  | StopEditingAction
   | GetInvoicesAction
   | SortInvoiceAction
   | StartLoadingAction
