@@ -8,6 +8,7 @@ export interface AppState {
   currentInvoice: InvoiceApiResponse | null;
   isEditing: boolean;
   isLoading: boolean;
+  isUpdating: boolean;
   isFormOpen: boolean;
   filterMethod: FilterOptions;
   errors: null | string;
@@ -19,6 +20,7 @@ const initialState: AppState = {
   isEditing: false,
   isFormOpen: false,
   isLoading: true,
+  isUpdating: false,
   filterMethod: 'all',
   errors: null,
 };
@@ -37,8 +39,15 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
     return {
       ...state,
       currentInvoice: action.payload.updatedInvoice,
-      isLoading: false,
+      invoices: state.invoices.map((invoice) => {
+        if (invoice._id === action.payload.updatedInvoice._id) {
+          return action.payload.updatedInvoice;
+        }
+        return invoice;
+      }),
       isEditing: false,
+      isUpdating: false,
+      isFormOpen: false,
     };
   }
   if (action.type === ActionType.SET_CURRENT_INVOICE) {
@@ -64,7 +73,8 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
     return {
       ...state,
       invoices: [...state.invoices, action.payload.newInvoice],
-      isLoading: false,
+      isUpdating: false,
+      isFormOpen: false,
     };
   }
   if (action.type === ActionType.SET_FILTER) {
@@ -89,6 +99,18 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
   }
   if (action.type === ActionType.CLOSE_FORM) {
     return { ...state, isFormOpen: false, isEditing: false };
+  }
+  if (action.type === ActionType.SHOW_ERROR) {
+    return {
+      ...state,
+      errors: 'Something went wrong, try again later',
+      isUpdating: false,
+      isFormOpen: false,
+      isEditing: false,
+    };
+  }
+  if (action.type === ActionType.START_UPDATING) {
+    return { ...state, isUpdating: true };
   }
   return state;
 };

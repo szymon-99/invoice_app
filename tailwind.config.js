@@ -59,6 +59,9 @@ module.exports = {
       animation: {
         loading: 'spin .7s ease-in-out infinite',
       },
+      transitionProperty: {
+        height: 'height',
+      },
     },
   },
   variants: {

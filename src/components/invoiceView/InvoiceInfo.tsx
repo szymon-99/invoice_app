@@ -38,18 +38,24 @@ const InvoiceInfo = () => {
           <div className=''>
             <div>
               <p>Invoice Date</p>
-              <p className='text-primary'>{formatDate(new Date(createdAt))}</p>
+              <p className='text-fontPrimary font-bold text-lg'>
+                {formatDate(new Date(createdAt))}
+              </p>
             </div>
 
             <div className='mt-8'>
               <p>Payment Due</p>
-              <p className='text-primary'>{formatDate(new Date(paymentDue))}</p>
+              <p className='text-fontPrimary font-bold text-lg'>
+                {formatDate(new Date(paymentDue))}
+              </p>
             </div>
           </div>
 
           <div className='flex flex-col'>
             <p>Bill To</p>
-            <p className='text-primary'>{clientInfo.name}</p>
+            <p className='text-fontPrimary font-bold text-lg'>
+              {clientInfo.name}
+            </p>
             <div className=' mt-8'>
               <p>{clientInfo.street}</p>
               <p>{clientInfo.city}</p>
@@ -61,7 +67,10 @@ const InvoiceInfo = () => {
 
         <div className=' mt-8 md:mt-0'>
           <p>Sent to</p>
-          <p className='text-primary'> {clientInfo.email}</p>
+          <p className='text-fontPrimary font-bold text-lg'>
+            {' '}
+            {clientInfo.email}
+          </p>
         </div>
       </div>
 

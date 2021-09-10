@@ -1,11 +1,9 @@
 import { FC } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import Input from './Input';
-
 import { ErrorMessage } from 'formik';
 import { motion } from 'framer-motion';
 import { slideUp } from '@utils/motionVariants';
-import { spawn } from 'child_process';
 
 interface InvoiceItemProps {
   index: number;
@@ -49,11 +47,9 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
           name={`itemList[${index}].price`}
         />
       </div>
-      <div className='text-xs  text-gray dark:text-light col-span-2 grid  md:col-span-2'>
+      <div className='text-xs  text-gray font-bold dark:text-light col-span-2 grid  md:col-span-2'>
         <span className='mt-4 md:hidden'>Total</span>
-        <span className='mt-2 font-bold md:mt-6'>
-          {Number(qty) * Number(price)}
-        </span>
+        <span className='mt-2  md:mt-6'>{Number(qty) * Number(price)}</span>
       </div>
 
       <button

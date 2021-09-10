@@ -9,8 +9,10 @@ import { InvoiceForm } from '@components/form';
 
 function App() {
   const { getInvoices } = useActions();
-  const { isFormOpen } = useAppSelector();
+  const { isEditing, isFormOpen } = useAppSelector();
   const location = useLocation();
+
+  console.log('app render');
 
   useEffect(() => {
     getInvoices();
@@ -19,7 +21,7 @@ function App() {
   return (
     <Layout>
       <AnimatePresence exitBeforeEnter>
-        {isFormOpen && <InvoiceForm />}
+        {isFormOpen && <InvoiceForm isEditing={isEditing} />}
       </AnimatePresence>
       <AnimatePresence exitBeforeEnter>
         <Switch location={location} key={location.pathname}>

@@ -1,9 +1,5 @@
 import { ActionType } from './action-types';
-import {
-  InvoiceApiResponse,
-  FilterOptions,
-  InvoiceClientInformations,
-} from '../../types';
+import { InvoiceApiResponse, FilterOptions } from '../../types';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from 'state';
 
@@ -11,7 +7,7 @@ export type AppThunk<T extends AppAction> = ThunkAction<
   void,
   RootState,
   unknown,
-  T
+  T | ShowErrorAction
 >;
 
 export interface OpenFormAction {
@@ -60,6 +56,13 @@ export interface UpdateInvoiceAction {
     updatedInvoice: InvoiceApiResponse;
   };
 }
+export interface ShowErrorAction {
+  type: ActionType.SHOW_ERROR;
+}
+
+export interface StartUpdatingAction {
+  type: ActionType.START_UPDATING;
+}
 
 export type AppAction =
   | OpenFormAction
@@ -71,4 +74,6 @@ export type AppAction =
   | SortInvoiceAction
   | StartLoadingAction
   | UpdateInvoiceAction
-  | SetFilterAction;
+  | SetFilterAction
+  | ShowErrorAction
+  | StartUpdatingAction;

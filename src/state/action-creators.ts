@@ -17,6 +17,7 @@ import {
   StartLoadingAction,
   OpenFormAction,
   AppThunk,
+  StartUpdatingAction,
 } from './actions';
 
 export const getInvoices =
@@ -32,7 +33,11 @@ export const getInvoices =
           invoices,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      dispatch({
+        type: ActionType.SHOW_ERROR,
+      });
+    }
   };
 
 export const addInvoice =
@@ -50,15 +55,19 @@ export const addInvoice =
           newInvoice,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      dispatch({
+        type: ActionType.SHOW_ERROR,
+      });
+    }
   };
 
 export const updateInvoice =
-  (invoiceToUpdate: InvoiceClientInformations): AppThunk<UpdateInvoiceAction> =>
+  (invoiceToUpdate: InvoiceApiResponse): AppThunk<UpdateInvoiceAction> =>
   async (dispatch) => {
     try {
       const { data: updatedInvoice } = await axios.patch<InvoiceApiResponse>(
-        `${process.env.REACT_APP_API_URL}`,
+        `${process.env.REACT_APP_API_URL}/${invoiceToUpdate._id}`,
         invoiceToUpdate
       );
 
@@ -68,7 +77,11 @@ export const updateInvoice =
           updatedInvoice,
         },
       });
-    } catch (error) {}
+    } catch (error) {
+      dispatch({
+        type: ActionType.SHOW_ERROR,
+      });
+    }
   };
 
 export const closeForm = (): CloseFormAction => ({
@@ -99,4 +112,8 @@ export const setFilter = (filterMethod: FilterOptions): SetFilterAction => ({
 
 export const sortInvoices = (): SortInvoiceAction => ({
   type: ActionType.SORT_INVOICES,
+});
+
+export const startUpdating = (): StartUpdatingAction => ({
+  type: ActionType.START_UPDATING,
 });

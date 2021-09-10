@@ -35,7 +35,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
       }}
       exit={{
         opacity: 0,
-        y: 10,
+        y: 15,
         transition: {
           delay: index * 0.06,
           duration: 0.25,
@@ -73,7 +73,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         <Status status={status} />
       </div>
 
-      <span className='hidden  ml-5 text-lg text-blue-500 md:inline'>
+      <span className='hidden ml-5 text-lg text-blue-500 md:inline'>
         <FiChevronRight />
       </span>
     </motion.li>

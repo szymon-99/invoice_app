@@ -1,32 +1,28 @@
 import { FC } from 'react';
 import { useFormikContext } from 'formik';
 import { InvoiceClientInformations } from '../../../types';
-import { useActions, useAppSelector } from '@hooks';
+import { useActions } from '@hooks';
 import { Button } from '@shared';
 
-const FormButtons: FC = () => {
+interface FormButtonsProps {
+  type: 'Add' | 'Edit';
+}
+
+const FormButtons: FC<FormButtonsProps> = ({ type }) => {
   const { submitForm, values: invoice } =
     useFormikContext<InvoiceClientInformations>();
 
-  const { addInvoice, closeForm, updateInvoice, startLoading } = useActions();
-  const { isEditing, isLoading } = useAppSelector();
+  const { addInvoice, closeForm, startUpdating } = useActions();
 
   const submitAsDraft = async () => {
-    startLoading();
+    startUpdating();
     addInvoice(invoice);
-    closeForm();
   };
-  const submitEdittedInvoice = async () => {
-    startLoading();
-    updateInvoice(invoice);
-    closeForm();
-  };
+
   return (
     <div className='fixed bottom-0 shadow-top bg-primaryLight inset-x-0 rounded-t-xl px-6 py-4 md:bg-primary md:px-14'>
       <div className='flex justify-end items-center space-x-2'>
-        {isLoading ? (
-          <h3>Loading...</h3>
-        ) : isEditing ? (
+        {type === 'Edit' && (
           <>
             <Button
               type='light'
@@ -36,11 +32,13 @@ const FormButtons: FC = () => {
             >
               Cancel
             </Button>
-            <Button type='primary' callback={submitEdittedInvoice}>
+            <Button type='primary' callback={submitForm}>
               Save Changes
             </Button>
           </>
-        ) : (
+        )}
+
+        {type === 'Add' && (
           <>
             <Button type='light' callback={closeForm}>
               Discard
