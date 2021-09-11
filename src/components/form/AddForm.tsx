@@ -22,7 +22,7 @@ const AddForm = () => {
     >
       <>
         <FormStructure />
-        <FormButtons type='Add' />
+        <FormButtons type='add' />
       </>
     </Formik>
   );

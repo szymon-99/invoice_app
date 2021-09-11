@@ -13,7 +13,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
   id,
   name,
   status,
-  price,
+  total,
   date,
   index,
 }) => {
@@ -42,20 +42,20 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
           easings: ['easeIn'],
         },
       }}
-      className='py-4 px-6 cursor-pointer text-left bg-primaryLight rounded-lg  transition duration-300 md:flex md:items-center hover:ring-1 ring-blue-500 focus:ring-1 focus:outline-none shadow-1'
+      className='py-4 px-6 cursor-pointer text-left bg-primaryLight rounded-lg transition duration-300 md:flex md:items-center hover:ring-1 ring-blue-500 focus:ring-1 focus:outline-none shadow-1'
     >
-      <div className='flex justify-between'>
+      <div className='flex flex-wrap justify-between'>
         <h3>
           <span className='text-gray'>#</span>
           {id.substring(0, 6).toUpperCase()}
         </h3>
-        <p className=' md:hidden'>{name}</p>
+        <p className=' md:hidden break-all'>{name}</p>
       </div>
 
       <div className='mt-6 flex justify-between items-center md:ml-7 md:mt-0 md:grid  md:grid-cols-12 md:gap-8  '>
         <div className='grid  md:col-span-9 md:flex md:items-center md:space-x-8'>
-          <p className=' md:justify-self-start'>
-            Due{' '}
+          <p className=' min-w-max md:justify-self-start'>
+            <span>Due </span>
             {new Date(date)
               .toUTCString()
               .split(' ')
@@ -63,11 +63,11 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
               .join(' ')
               .replace(',', '')}
           </p>
-          <p className='hidden text-fontSecondary md:block md:flex-grow'>
+          <p className='hidden text-fontSecondary md:block md:flex-grow overflow-x-scroll'>
             {name}
           </p>
-          <p className=' mt-2 font-bold text-sm md:text-base text-fontPrimary md:mt-0  '>
-            {`$${price}`}
+          <p className=' mt-2 font-bold text-sm lg:text-base text-fontPrimary md:mt-0 overflow-x-scroll'>
+            {`$${total.toFixed(2)}`}
           </p>
         </div>
         <Status status={status} />

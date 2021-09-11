@@ -29,7 +29,7 @@ const ItemList = () => {
 
               <button
                 type='button'
-                className='rounded-3xl flex w-full justify-center py-4 bg-lightBlue focus text-blue-600 dark:text-light dark:bg-dark-300 hover:bg-blue-100 dark:hover:bg-dark-900 dark:hover:text-blue-600 transition'
+                className=' mt-2 rounded-3xl flex w-full justify-center py-4 bg-lightBlue focus text-blue-600 dark:text-light dark:bg-dark-300 hover:bg-blue-100 dark:hover:bg-dark-900 dark:hover:text-blue-600 transition'
                 onClick={() =>
                   helpers.push({ name: '', qty: '', price: formatPrice() })
                 }

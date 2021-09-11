@@ -9,8 +9,16 @@ const InvoiceInfo = () => {
 
   if (!currentInvoice) return null;
 
-  const { _id, itemList, userInfo, clientInfo, desc, paymentDue, createdAt } =
-    currentInvoice;
+  const {
+    _id,
+    itemList,
+    userInfo,
+    clientInfo,
+    desc,
+    paymentDue,
+    createdAt,
+    total,
+  } = currentInvoice;
   return (
     <motion.main
       initial='hidden'
@@ -21,7 +29,10 @@ const InvoiceInfo = () => {
     >
       <div className='md:flex md:justify-between'>
         <div>
-          <h3>#{_id.substring(0, 6)}</h3>
+          <h1 className='text-lg'>
+            <span className='text-fontSecondary'>#</span>
+            {_id.substring(0, 6).toUpperCase()}
+          </h1>
           <p className='mt-1'>{desc}</p>
         </div>
 
@@ -33,27 +44,23 @@ const InvoiceInfo = () => {
         </div>
       </div>
 
-      <div className=' md:grid md:grid-cols-2 mt-8 md:gap-9'>
-        <div className='grid grid-cols-2 md:gap-9'>
-          <div className=''>
-            <div>
-              <p>Invoice Date</p>
-              <p className='text-fontPrimary font-bold text-lg'>
-                {formatDate(new Date(createdAt))}
-              </p>
-            </div>
+      <div className=' md:grid  mt-8 md:gap-9'>
+        <div className=' grid grid-cols-2 md:gap-9'>
+          <div>
+            <p>Invoice Date</p>
+            <p className='text-fontPrimary font-bold text-base md:text-lg'>
+              {formatDate(new Date(createdAt))}
+            </p>
 
-            <div className='mt-8'>
-              <p>Payment Due</p>
-              <p className='text-fontPrimary font-bold text-lg'>
-                {formatDate(new Date(paymentDue))}
-              </p>
-            </div>
+            <p className='mt-8'>Payment Due</p>
+            <p className='text-fontPrimary font-bold text-base md:text-lg'>
+              {formatDate(new Date(paymentDue))}
+            </p>
           </div>
 
-          <div className='flex flex-col'>
+          <div>
             <p>Bill To</p>
-            <p className='text-fontPrimary font-bold text-lg'>
+            <p className='text-fontPrimary font-bold text-base md:text-lg max-w-full break-words'>
               {clientInfo.name}
             </p>
             <div className=' mt-8'>
@@ -67,8 +74,7 @@ const InvoiceInfo = () => {
 
         <div className=' mt-8 md:mt-0'>
           <p>Sent to</p>
-          <p className='text-fontPrimary font-bold text-lg'>
-            {' '}
+          <p className='text-fontPrimary font-bold text-base md:text-lg'>
             {clientInfo.email}
           </p>
         </div>
@@ -81,14 +87,7 @@ const InvoiceInfo = () => {
 
         <div className='p-6 bg-dark-200 dark:bg-dark-900 flex justify-between items-center md:px-8'>
           <p className='text-white'>Grand total</p>
-          <p className='font-bold text-lg text-white '>
-            {`$ ${itemList
-              .reduce((prev, curr) => {
-                const value = Number(curr.price) * Number(curr.qty);
-                return (prev += value);
-              }, 0)
-              .toFixed(2)}`}
-          </p>
+          <p className='font-bold text-lg text-white '>$ {total.toFixed(2)}</p>
         </div>
       </div>
     </motion.main>

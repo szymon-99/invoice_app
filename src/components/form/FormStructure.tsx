@@ -6,7 +6,7 @@ import { paymentOptions } from '@utils/constants';
 
 const FormStructure = () => {
   return (
-    <Form className='pt-4 pb-16'>
+    <Form className='px-6 pb-56 max-h-full overflow-scroll md:px-14 '>
       <div className='mt-6'>
         <h3 className='text-blue-500 dark:text-blue-500'>Bill From</h3>
         <Input name='userInfo.street' label='street address' />

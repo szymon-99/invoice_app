@@ -5,7 +5,7 @@ export interface InvoiceBasicInfo {
   id: string;
   name: string;
   date: string;
-  price: string;
+  total: number;
   status: TStatus;
 }
 
@@ -37,7 +37,7 @@ export interface InvoiceClientInformations {
 }
 export interface InvoiceApiResponse extends InvoiceClientInformations {
   _id: string;
-  total: string;
+  total: number;
 }
 
 type PaymentTerms =

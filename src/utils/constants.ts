@@ -51,7 +51,7 @@ export const validationSchema = Yup.object().shape({
         name: Yup.string().required('- Please provide item name'),
         qty: Yup.string().required('- Please provide quantity'),
         price: Yup.string()
-          .matches(/[^(0\.00)]/, '- Price must be provided')
+          .matches(/[^(0.00)]/, '- Price must be provided')
           .required('- Please provide price '),
       })
     )

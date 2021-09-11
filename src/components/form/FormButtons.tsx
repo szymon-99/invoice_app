@@ -5,7 +5,7 @@ import { useActions } from '@hooks';
 import { Button } from '@shared';
 
 interface FormButtonsProps {
-  type: 'Add' | 'Edit';
+  type: 'add' | 'edit';
 }
 
 const FormButtons: FC<FormButtonsProps> = ({ type }) => {
@@ -18,11 +18,11 @@ const FormButtons: FC<FormButtonsProps> = ({ type }) => {
     startUpdating();
     addInvoice(invoice);
   };
-
+  // absolute inset-x-0 bottom-0
   return (
-    <div className='fixed bottom-0 shadow-top bg-primaryLight inset-x-0 rounded-t-xl px-6 py-4 md:bg-primary md:px-14'>
+    <div className='fixed inset-x-0 bottom-0 shadow-top bg-primary  rounded-t-xl px-6 py-4  md:px-14'>
       <div className='flex justify-end items-center space-x-2'>
-        {type === 'Edit' && (
+        {type === 'edit' && (
           <>
             <Button
               type='light'
@@ -38,7 +38,7 @@ const FormButtons: FC<FormButtonsProps> = ({ type }) => {
           </>
         )}
 
-        {type === 'Add' && (
+        {type === 'add' && (
           <>
             <Button type='light' callback={closeForm}>
               Discard
