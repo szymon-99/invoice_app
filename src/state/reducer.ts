@@ -74,7 +74,7 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
   if (action.type === ActionType.ADD_INVOICE) {
     return {
       ...state,
-      invoices: [...state.invoices, action.payload.newInvoice],
+      invoices: [action.payload.newInvoice, ...state.invoices],
       isUpdating: false,
       isFormOpen: false,
     };

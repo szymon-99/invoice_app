@@ -1,6 +1,5 @@
-import { formatPrice, formatQty } from '@utils/helpers';
 import { useField } from 'formik';
-import { FC, ChangeEvent } from 'react';
+import { FC } from 'react';
 
 interface TextInputProps {
   label: string;
@@ -8,36 +7,17 @@ interface TextInputProps {
   placeholder?: string;
   type?: 'email' | 'number' | 'date';
   itemList?: true;
-  price?: true;
-  qty?: true;
 }
 
-const TextInput: FC<TextInputProps> = ({
-  label,
-  qty,
-  price,
-  itemList,
-  ...props
-}) => {
-  const [field, meta, helpers] = useField(props);
-
-  // const { setValue } = helpers
-
-  // if (qty) {
-  //   field.onChange = (e: ChangeEvent<any>) =>
-  //     setValue(formatQty(e.target.value))
-  // }
-  // if (price) {
-  //   field.onChange = (e: ChangeEvent<any>) =>
-  //     setValue(formatPrice(e.target.value))
-  // }
+const TextInput: FC<TextInputProps> = ({ label, itemList, ...props }) => {
+  const [field, meta] = useField(props);
 
   return (
     <div className={` mt-4 ${itemList && 'md:mt-0'}`}>
       <div className='flex justify-between'>
         <label
           htmlFor={field.name}
-          className={`font-medium transition capitalize text-blue-600 dark:text-blue-100 text-xs
+          className={`font-medium pt-1 transition capitalize text-blue-600 dark:text-blue-100 text-xs
           ${itemList && 'md:hidden'}`}
         >
           {label}

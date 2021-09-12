@@ -18,7 +18,7 @@ export default function InvoicesGrid() {
 
   return (
     <main>
-      <ul className='grid gap-4 mt-8  md:mt-16'>
+      <ul className='grid gap-4 mt-8 pb-16  md:mt-16'>
         {invoices.map((invoice, index) => {
           return (
             <InvoiceCell key={invoice.id} {...invoice} index={index + 1} />

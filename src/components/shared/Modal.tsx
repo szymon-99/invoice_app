@@ -15,6 +15,7 @@ const Modal = () => {
     if (!currentInvoice) {
       history.push('/');
     }
+    // eslint-disable-next-line
   }, [currentInvoice]);
 
   return (

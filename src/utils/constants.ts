@@ -4,7 +4,6 @@ import {
   PaymentTerms,
 } from '../../types';
 import * as Yup from 'yup';
-import { formatPrice } from './helpers';
 
 export const initialValues: InvoiceClientInformations = {
   userInfo: {
@@ -25,33 +24,33 @@ export const initialValues: InvoiceClientInformations = {
   paymentDue: 'next 7 days',
   desc: '',
   status: 'draft',
-  itemList: [{ name: '', price: formatPrice(), qty: '' }],
+  itemList: [{ name: '', price: '0.00', qty: '0' }],
 };
 
 export const validationSchema = Yup.object().shape({
   userInfo: Yup.object({
-    street: Yup.string().required("Can't be empty"),
-    city: Yup.string().required("Can't be empty"),
-    country: Yup.string().required("Can't be empty"),
-    postCode: Yup.string().required("Can't be empty"),
+    street: Yup.string().trim().required('required'),
+    city: Yup.string().trim().required('required'),
+    country: Yup.string().trim().required('required'),
+    postCode: Yup.string().trim().required('required'),
   }),
   clientInfo: Yup.object({
-    name: Yup.string().required("Can't be empty"),
-    email: Yup.string()
-      .email('Invalid Email')
-      .required('Invalid email address'),
-    street: Yup.string().required("Can't be empty"),
-    country: Yup.string().required("Can't be empty"),
-    postCode: Yup.string().required("Can't be empty"),
-    city: Yup.string().required("Can't be empty"),
+    name: Yup.string().trim().required('required'),
+    email: Yup.string().trim().email('Invalid Email').required('required'),
+    street: Yup.string().trim().required('required'),
+    country: Yup.string().trim().required('required'),
+    postCode: Yup.string().trim().required('required'),
+    city: Yup.string().trim().required('required'),
   }),
   itemList: Yup.array()
     .of(
       Yup.object({
-        name: Yup.string().required('- Please provide item name'),
-        qty: Yup.string().required('- Please provide quantity'),
+        name: Yup.string().trim().required('- Please provide item name'),
+        qty: Yup.string()
+          .matches(/[^0]+/, '- Please provide quantity')
+          .required('- Please provide quantity'),
         price: Yup.string()
-          .matches(/[^(0.00)]/, '- Price must be provided')
+          .matches(/[^(0.00)]/, '- Please provide price')
           .required('- Please provide price '),
       })
     )

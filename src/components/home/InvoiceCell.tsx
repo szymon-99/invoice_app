@@ -29,7 +29,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         opacity: 1,
         y: 0,
         transition: {
-          delay: index * 0.09,
+          delay: index * 0.08,
           easings: ['easeInOut'],
         },
       }}
@@ -37,7 +37,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         opacity: 0,
         y: 15,
         transition: {
-          delay: index * 0.1,
+          delay: index * 0.08,
           easings: ['easeOut'],
         },
       }}

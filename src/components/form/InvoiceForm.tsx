@@ -2,7 +2,6 @@ import { Back, Background } from '@shared';
 import { motion } from 'framer-motion';
 import { formVariants } from '@utils/motionVariants';
 import { useActions, useAppSelector } from '@hooks';
-import Form from './FormStructure';
 import { FC } from 'react';
 import EditForm from './EditForm';
 import AddForm from './AddForm';

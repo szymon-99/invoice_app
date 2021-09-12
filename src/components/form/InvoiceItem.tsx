@@ -1,9 +1,10 @@
 import { FC } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import Input from './Input';
-import { ErrorMessage } from 'formik';
+import { ErrorMessage, useFormikContext } from 'formik';
 import { motion } from 'framer-motion';
 import { slideUp } from '@utils/motionVariants';
+import { InvoiceClientInformations } from '../../../types';
 
 interface InvoiceItemProps {
   index: number;
@@ -19,6 +20,8 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
   index,
   values: { price, qty },
 }) => {
+  const { values } = useFormikContext<InvoiceClientInformations>();
+
   return (
     <motion.div
       initial='hidden'
@@ -32,7 +35,6 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
       <div className=' col-span-3 md:col-span-2'>
         <Input
           itemList
-          qty
           label='Qty'
           type='number'
           name={`itemList[${index}].qty`}
@@ -41,7 +43,6 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
       <div className='col-span-3 md:col-span-3'>
         <Input
           itemList
-          price
           label='Price'
           type='number'
           name={`itemList[${index}].price`}
@@ -49,18 +50,22 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
       </div>
       <div className='text-xs  text-gray font-bold dark:text-light col-span-2 grid  md:col-span-2'>
         <span className='mt-4 md:hidden'>Total</span>
-        <span className='mt-2  md:mt-6'>{Number(qty) * Number(price)}</span>
+        <span className='mt-2  md:mt-6 overflow-scroll'>
+          {(Number(qty) * Number(price)).toFixed(2)}
+        </span>
       </div>
 
-      <button
-        type='button'
-        onClick={() => remove(index)}
-        className='col-auto self-end flex justify-center py-4 text-lg transition focus text-fontSecondary hover:text-red-500 cursor-pointer'
-      >
-        <FaTrash />
-      </button>
+      {values.itemList.length > 1 && (
+        <button
+          type='button'
+          onClick={() => remove(index)}
+          className='col-auto self-end flex justify-center py-4 text-lg transition focus text-fontSecondary hover:text-red-500 cursor-pointer'
+        >
+          <FaTrash />
+        </button>
+      )}
 
-      <div className='grid col-span-full space-y-2'>
+      <div className='grid col-span-full space-y-2 mt-3'>
         <ErrorMessage name={`itemList[${index}.name]`} component={ItemError} />
         <ErrorMessage name={`itemList[${index}.qty]`} component={ItemError} />
         <ErrorMessage name={`itemList[${index}.price]`} component={ItemError} />
