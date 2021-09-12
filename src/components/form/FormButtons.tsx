@@ -18,7 +18,7 @@ const FormButtons: FC<FormButtonsProps> = ({ type }) => {
     startUpdating();
     addInvoice(invoice);
   };
-  // absolute inset-x-0 bottom-0
+
   return (
     <div className='fixed inset-x-0 bottom-0 shadow-top bg-primary  rounded-t-xl px-6 py-4  md:px-14'>
       <div className='flex justify-end items-center space-x-2'>

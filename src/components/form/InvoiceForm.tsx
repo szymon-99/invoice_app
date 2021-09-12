@@ -24,7 +24,7 @@ const InvoiceForm: FC<InvoiceFormProps> = ({ isEditing }) => {
         animate='show'
         exit='exit'
         variants={formVariants}
-        className='absolute pt-20 inset-x-0 top-0 bg-white z-10 dark:bg-dark-400 md:max-w-3xl md:pt-0  md:pl-24 h-screen max-h-screen md:rounded-r-xl'
+        className='fixed pt-20 inset-x-0 top-0 bg-white z-10 dark:bg-dark-400 md:max-w-3xl md:pt-0  md:pl-24 h-screen max-h-screen md:rounded-r-xl'
       >
         <div className='px-6 py-8 md:px-14'>
           <Back form />

@@ -18,6 +18,9 @@ import {
   OpenFormAction,
   AppThunk,
   StartUpdatingAction,
+  OpenModalAction,
+  CloseModalAction,
+  DeleteInvoiceAction,
 } from './actions';
 
 export const getInvoices =
@@ -84,6 +87,20 @@ export const updateInvoice =
     }
   };
 
+export const deleteInvoice =
+  (id: string): AppThunk<DeleteInvoiceAction> =>
+  async (dispatch) => {
+    try {
+      await axios
+        .delete(`${process.env.REACT_APP_API_URL}/${id}`)
+        .catch((err) => err);
+
+      dispatch({ type: ActionType.DELETE_INVOICE, payload: { id } });
+    } catch (error) {
+      dispatch({ type: ActionType.SHOW_ERROR });
+    }
+  };
+
 export const closeForm = (): CloseFormAction => ({
   type: ActionType.CLOSE_FORM,
 });
@@ -116,4 +133,12 @@ export const sortInvoices = (): SortInvoiceAction => ({
 
 export const startUpdating = (): StartUpdatingAction => ({
   type: ActionType.START_UPDATING,
+});
+
+export const openModal = (): OpenModalAction => ({
+  type: ActionType.OPEN_MODAL,
+});
+
+export const closeModal = (): CloseModalAction => ({
+  type: ActionType.CLOSE_MODAL,
 });

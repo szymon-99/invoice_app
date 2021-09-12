@@ -14,6 +14,7 @@ const EditForm = () => {
   }
 
   const handleSubmit = async (invoice: InvoiceApiResponse) => {
+    invoice.status = 'pending';
     startUpdating();
     updateInvoice(invoice);
   };

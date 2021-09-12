@@ -56,9 +56,7 @@ module.exports = {
       inset: {
         18: '4.5rem',
       },
-      animation: {
-        loading: 'spin .7s ease-in-out infinite',
-      },
+
       transitionProperty: {
         height: 'height',
       },

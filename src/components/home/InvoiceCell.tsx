@@ -30,16 +30,15 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         y: 0,
         transition: {
           delay: index * 0.09,
-          easings: ['easeOut'],
+          easings: ['easeInOut'],
         },
       }}
       exit={{
         opacity: 0,
         y: 15,
         transition: {
-          delay: index * 0.06,
-          duration: 0.25,
-          easings: ['easeIn'],
+          delay: index * 0.1,
+          easings: ['easeOut'],
         },
       }}
       className='py-4 px-6 cursor-pointer text-left bg-primaryLight rounded-lg transition duration-300 md:flex md:items-center hover:ring-1 ring-blue-500 focus:ring-1 focus:outline-none shadow-1'

@@ -12,8 +12,6 @@ function App() {
   const { isEditing, isFormOpen } = useAppSelector();
   const location = useLocation();
 
-  console.log('app render');
-
   useEffect(() => {
     getInvoices();
   }, [getInvoices]);

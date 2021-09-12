@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 interface ButtonProps {
   callback: () => void;
+
   type: 'danger' | 'primary' | 'dark' | 'light';
 }
 

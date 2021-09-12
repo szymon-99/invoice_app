@@ -38,7 +38,7 @@
   }
   ,
   p {
-    @apply text-xs font-medium tracking-wider leading-4 text-fontSecondary transition;
+    @apply text-xs font-medium tracking-wider leading-5 text-fontSecondary transition;
   }
   ,
   h3 {
@@ -53,10 +53,7 @@
   .box {
     @apply mt-28 max-w-90vw mx-auto  md:w-full md:max-w-3xl md:mt-20 md:px-4 md:h-full;
   }
-  .loading {
-    border-color: var(--blue-500);
-    border-top-color: var(--font-primary);
-  }
+
   .btn {
     @apply px-6 py-4 text-xxs sm:text-xs  leading-4 rounded-3xl font-bold transition focus;
   }

@@ -4,16 +4,16 @@ import {
   EditButtons,
   InvoiceInfo,
 } from '@components/invoiceView';
-import { Back, ErrorMessage, Loading } from '@shared';
+import { Back, ErrorMessage, Loading, Modal } from '@shared';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { slideUp } from '@utils/motionVariants';
 
 const InvoicePage = () => {
   const { id } = useParams<{ id: string }>();
   const { setCurrentInvoice } = useActions();
-  const { currentInvoice, isLoading, errors } = useAppSelector();
+  const { currentInvoice, isLoading, errors, isModalOpen } = useAppSelector();
 
   useEffect(() => {
     if (!isLoading) {
@@ -27,6 +27,8 @@ const InvoicePage = () => {
 
   return (
     <div className=' mt-12 pb-24 max-w-90vw mx-auto  md:w-full md:max-w-4xl md:px-4 md:h-full md:mt-0'>
+      <AnimatePresence>{isModalOpen && <Modal />}</AnimatePresence>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{

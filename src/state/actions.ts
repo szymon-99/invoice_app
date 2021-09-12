@@ -3,7 +3,7 @@ import { InvoiceApiResponse, FilterOptions } from '../../types';
 import { ThunkAction } from 'redux-thunk';
 import { RootState } from 'state';
 
-export type AppThunk<T extends AppAction> = ThunkAction<
+export type AppThunk<T extends AsyncAction> = ThunkAction<
   void,
   RootState,
   unknown,
@@ -35,6 +35,21 @@ export interface AddInvoiceAction {
     newInvoice: InvoiceApiResponse;
   };
 }
+
+export interface UpdateInvoiceAction {
+  type: ActionType.UPDATE_INVOICE;
+  payload: {
+    updatedInvoice: InvoiceApiResponse;
+  };
+}
+
+export interface DeleteInvoiceAction {
+  type: ActionType.DELETE_INVOICE;
+  payload: {
+    id: string;
+  };
+}
+
 export interface SortInvoiceAction {
   type: ActionType.SORT_INVOICES;
 }
@@ -50,18 +65,21 @@ export interface SetCurrentInvoiceAction {
     id: string;
   };
 }
-export interface UpdateInvoiceAction {
-  type: ActionType.UPDATE_INVOICE;
-  payload: {
-    updatedInvoice: InvoiceApiResponse;
-  };
-}
+
 export interface ShowErrorAction {
   type: ActionType.SHOW_ERROR;
 }
 
 export interface StartUpdatingAction {
   type: ActionType.START_UPDATING;
+}
+
+export interface OpenModalAction {
+  type: ActionType.OPEN_MODAL;
+}
+
+export interface CloseModalAction {
+  type: ActionType.CLOSE_MODAL;
 }
 
 export type AppAction =
@@ -76,4 +94,13 @@ export type AppAction =
   | UpdateInvoiceAction
   | SetFilterAction
   | ShowErrorAction
-  | StartUpdatingAction;
+  | StartUpdatingAction
+  | OpenModalAction
+  | CloseModalAction
+  | DeleteInvoiceAction;
+
+type AsyncAction =
+  | AddInvoiceAction
+  | GetInvoicesAction
+  | UpdateInvoiceAction
+  | DeleteInvoiceAction;

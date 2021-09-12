@@ -1,3 +1,9 @@
+const springTransition = {
+  duration: 0.8,
+  type: 'spring',
+  bounce: 0.1,
+};
+
 export const slideFromLeft = {
   hidden: {
     opacity: 0,
@@ -49,18 +55,27 @@ export const formVariants = {
   },
   show: {
     x: 0,
-    transition: {
-      duration: 0.8,
-      type: 'spring',
-      bounce: 0.1,
-    },
+    transition: springTransition,
   },
   exit: {
     x: '-100%',
-    transition: {
-      duration: 0.8,
-      type: 'spring',
-      bounce: 0.1,
-    },
+    transition: springTransition,
+  },
+};
+
+export const scaleUp = {
+  hidden: {
+    opacity: 0,
+    scale: 0.4,
+  },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: springTransition,
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.4,
+    transition: springTransition,
   },
 };

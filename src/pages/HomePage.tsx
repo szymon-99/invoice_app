@@ -1,9 +1,16 @@
 import { ControlPanel, InvoicesGrid, EmptyView } from '../components/home';
-import { useAppSelector } from '@hooks';
+import { useActions, useAppSelector } from '@hooks';
 import { Loading } from '@shared';
+import { useEffect } from 'react';
 
 const HomePage = () => {
-  const { sortedInvoices, isLoading } = useAppSelector();
+  const { invoices, isLoading, filterMethod, sortedInvoices } =
+    useAppSelector();
+  const { sortInvoices } = useActions();
+
+  useEffect(() => {
+    sortInvoices();
+  }, [invoices, filterMethod, sortInvoices]);
 
   if (isLoading) {
     return <Loading />;

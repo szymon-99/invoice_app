@@ -48,19 +48,19 @@ const InvoiceInfo = () => {
         <div className=' grid grid-cols-2 md:gap-9'>
           <div>
             <p>Invoice Date</p>
-            <p className='text-fontPrimary font-bold text-base md:text-lg'>
+            <p className=' mt-2 text-fontPrimary font-bold text-base md:text-lg'>
               {formatDate(new Date(createdAt))}
             </p>
 
             <p className='mt-8'>Payment Due</p>
-            <p className='text-fontPrimary font-bold text-base md:text-lg'>
+            <p className=' mt-2 text-fontPrimary font-bold text-base md:text-lg'>
               {formatDate(new Date(paymentDue))}
             </p>
           </div>
 
           <div>
             <p>Bill To</p>
-            <p className='text-fontPrimary font-bold text-base md:text-lg max-w-full break-words'>
+            <p className='mt-2 text-fontPrimary font-bold text-base md:text-lg max-w-full break-words'>
               {clientInfo.name}
             </p>
             <div className=' mt-8'>

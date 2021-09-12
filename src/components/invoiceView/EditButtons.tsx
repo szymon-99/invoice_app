@@ -1,13 +1,18 @@
 import { Button } from '@shared';
 import { FC } from 'react';
-import { useActions } from '@hooks';
+import { useActions, useAppSelector } from '@hooks';
 
 interface EditButtonsInterface {
   fixed?: true;
 }
 
 const EditButtons: FC<EditButtonsInterface> = ({ fixed }) => {
-  const { startEditing } = useActions();
+  const { startEditing, openModal } = useActions();
+  const { currentInvoice } = useAppSelector();
+
+  if (!currentInvoice) {
+    return null;
+  }
 
   return (
     <div
@@ -18,12 +23,14 @@ const EditButtons: FC<EditButtonsInterface> = ({ fixed }) => {
       <Button type='light' callback={startEditing}>
         Edit
       </Button>
-      <Button type='danger' callback={() => {}}>
+      <Button type='danger' callback={openModal}>
         Delete
       </Button>
-      <Button type='primary' callback={() => {}}>
-        Mark as Paid
-      </Button>
+      {currentInvoice.status === 'pending' && (
+        <Button type='primary' callback={() => {}}>
+          Mark as Paid
+        </Button>
+      )}
     </div>
   );
 };

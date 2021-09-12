@@ -10,6 +10,7 @@ export interface AppState {
   isLoading: boolean;
   isUpdating: boolean;
   isFormOpen: boolean;
+  isModalOpen: boolean;
   filterMethod: FilterOptions;
   errors: null | string;
 }
@@ -21,6 +22,7 @@ const initialState: AppState = {
   isFormOpen: false,
   isLoading: true,
   isUpdating: false,
+  isModalOpen: false,
   filterMethod: 'all',
   errors: null,
 };
@@ -77,6 +79,17 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
       isFormOpen: false,
     };
   }
+  if (action.type === ActionType.DELETE_INVOICE) {
+    return {
+      ...state,
+      invoices: state.invoices.filter(
+        (invoice) => invoice._id !== action.payload.id
+      ),
+      isUpdating: false,
+      isModalOpen: false,
+      currentInvoice: null,
+    };
+  }
   if (action.type === ActionType.SET_FILTER) {
     return { ...state, filterMethod: action.payload.filterMethod };
   }
@@ -111,6 +124,12 @@ export const reducer = (state = initialState, action: AppAction): AppState => {
   }
   if (action.type === ActionType.START_UPDATING) {
     return { ...state, isUpdating: true };
+  }
+  if (action.type === ActionType.OPEN_MODAL) {
+    return { ...state, isModalOpen: true };
+  }
+  if (action.type === ActionType.CLOSE_MODAL) {
+    return { ...state, isModalOpen: false };
   }
   return state;
 };
