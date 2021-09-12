@@ -5,6 +5,7 @@ const InvoiceCounter = () => {
   const { sortedInvoices, isLoading } = useAppSelector();
 
   const amount = sortedInvoices.length;
+
   return isLoading ? null : (
     <motion.p
       initial={{ opacity: 0 }}

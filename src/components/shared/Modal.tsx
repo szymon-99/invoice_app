@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 const Modal = () => {
   const { closeModal, deleteInvoice, startUpdating } = useActions();
-  const { currentInvoice, isUpdating } = useAppSelector();
+  const { currentInvoice } = useAppSelector();
   const history = useHistory();
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const Modal = () => {
               </Button>
               <Button
                 type='danger'
+                withSpinner
                 callback={() => {
                   startUpdating();
                   deleteInvoice(currentInvoice._id);

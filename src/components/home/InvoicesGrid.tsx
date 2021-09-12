@@ -1,7 +1,6 @@
 import InvoiceCell from './InvoiceCell';
 import { InvoiceBasicInfo } from '../../../types';
 import { useAppSelector } from '@hooks';
-import { motion } from 'framer-motion';
 
 export default function InvoicesGrid() {
   const { sortedInvoices } = useAppSelector();

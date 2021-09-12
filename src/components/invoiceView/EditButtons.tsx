@@ -7,7 +7,8 @@ interface EditButtonsInterface {
 }
 
 const EditButtons: FC<EditButtonsInterface> = ({ fixed }) => {
-  const { startEditing, openModal } = useActions();
+  const { startEditing, openModal, updateInvoice, startUpdating } =
+    useActions();
   const { currentInvoice } = useAppSelector();
 
   if (!currentInvoice) {
@@ -20,14 +21,24 @@ const EditButtons: FC<EditButtonsInterface> = ({ fixed }) => {
         fixed && 'py-2 justify-end max-w-90vw mx-auto'
       }`}
     >
-      <Button type='light' callback={startEditing}>
-        Edit
-      </Button>
+      {currentInvoice.status !== 'paid' && (
+        <Button type='light' callback={startEditing}>
+          Edit
+        </Button>
+      )}
       <Button type='danger' callback={openModal}>
         Delete
       </Button>
       {currentInvoice.status === 'pending' && (
-        <Button type='primary' callback={() => {}}>
+        <Button
+          type='primary'
+          withSpinner
+          callback={() => {
+            currentInvoice.status = 'paid';
+            startUpdating();
+            updateInvoice(currentInvoice);
+          }}
+        >
           Mark as Paid
         </Button>
       )}

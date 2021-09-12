@@ -32,7 +32,7 @@ const FormButtons: FC<FormButtonsProps> = ({ type }) => {
             >
               Cancel
             </Button>
-            <Button type='primary' callback={submitForm}>
+            <Button type='primary' withSpinner callback={submitForm}>
               Save Changes
             </Button>
           </>
@@ -43,10 +43,10 @@ const FormButtons: FC<FormButtonsProps> = ({ type }) => {
             <Button type='light' callback={closeForm}>
               Discard
             </Button>
-            <Button type='dark' callback={submitAsDraft}>
+            <Button type='dark' withSpinner callback={submitAsDraft}>
               Save as Draft
             </Button>
-            <Button callback={submitForm} type='primary'>
+            <Button callback={submitForm} withSpinner type='primary'>
               Save & Send
             </Button>
           </>

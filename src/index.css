@@ -55,6 +55,6 @@
   }
 
   .btn {
-    @apply px-6 py-4 text-xxs sm:text-xs  leading-4 rounded-3xl font-bold transition focus;
+    @apply px-6 py-4 text-xs  leading-4 rounded-3xl font-bold transition focus;
   }
 }
