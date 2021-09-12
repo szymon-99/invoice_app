@@ -1,4 +1,4 @@
-import { slideUp } from '@utils/motionVariants';
+import { slideUpSlowly } from '@utils/motionVariants';
 import { motion } from 'framer-motion';
 import emptyImg from '../../images/illustration-empty.svg';
 
@@ -7,8 +7,7 @@ export default function InvoicesEmpty() {
     <motion.div
       initial='hidden'
       animate='show'
-      exit='exit'
-      variants={slideUp}
+      variants={slideUpSlowly}
       className=' mt-28 grid place-items-center text-center md:mt-32'
     >
       <img src={emptyImg} alt='empty application' />

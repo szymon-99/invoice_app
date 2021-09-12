@@ -44,10 +44,10 @@ const FormButtons: FC<FormButtonsProps> = ({ type }) => {
               Discard
             </Button>
             <Button type='dark' withSpinner callback={submitAsDraft}>
-              Save as Draft
+              <span className='hidden sm:inline'>Save as </span>Draft
             </Button>
             <Button callback={submitForm} withSpinner type='primary'>
-              Save & Send
+              Save<span className='hidden sm:inline'> & Send</span>
             </Button>
           </>
         )}

@@ -26,7 +26,7 @@ const EditForm = () => {
       onSubmit={(values) => handleSubmit(values)}
     >
       <>
-        <FormStructure />
+        <FormStructure edit />
         <FormButtons type='edit' />
       </>
     </Formik>

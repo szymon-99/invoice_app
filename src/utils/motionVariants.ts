@@ -34,17 +34,30 @@ export const slideUp = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.25,
       easings: 'easeIn',
-      delay: 0.2,
+      delay: 0.1,
     },
   },
   exit: {
     opacity: 0,
     y: 20,
     transition: {
+      duration: 0.25,
+      easings: 'easeIn',
+    },
+  },
+};
+
+export const slideUpSlowly = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
       duration: 0.4,
       easings: 'easeIn',
+      delay: 0.2,
     },
   },
 };
