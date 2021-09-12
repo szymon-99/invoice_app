@@ -4,6 +4,7 @@ import { FiChevronRight } from 'react-icons/fi';
 import { FC } from 'react';
 import { InvoiceBasicInfo } from '../../../types';
 import { motion } from 'framer-motion';
+import { formatID } from '@utils/helpers';
 
 interface InvoiceCellProps extends InvoiceBasicInfo {
   index: number;
@@ -46,7 +47,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
       <div className='flex flex-wrap justify-between'>
         <h3>
           <span className='text-gray'>#</span>
-          {id.substring(0, 6).toUpperCase()}
+          {formatID(id)}
         </h3>
         <p className=' md:hidden break-all'>{name}</p>
       </div>

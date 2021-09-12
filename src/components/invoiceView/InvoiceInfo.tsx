@@ -1,5 +1,5 @@
 import { useAppSelector } from '@hooks';
-import { formatDate } from '@utils/helpers';
+import { formatDate, formatID } from '@utils/helpers';
 import { slideFromLeft } from '@utils/motionVariants';
 import { motion } from 'framer-motion';
 import Summary from './Summary';
@@ -31,7 +31,7 @@ const InvoiceInfo = () => {
         <div>
           <h1 className='text-lg'>
             <span className='text-fontSecondary'>#</span>
-            {_id.substring(0, 6).toUpperCase()}
+            {formatID(_id)}
           </h1>
           <p className='mt-1'>{desc}</p>
         </div>

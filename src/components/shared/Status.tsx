@@ -5,26 +5,17 @@ import { TStatus } from '../../../types';
 interface StatusProps {
   status: TStatus;
 }
-type ColorClasses = {
-  [key in TStatus]: String;
-};
 
 const Status: FC<StatusProps> = ({ status }) => {
-  const colors: ColorClasses = {
-    pending: 'orange',
-    draft: 'dark-200',
-    paid: 'green',
-  };
-
   return (
     <div
-      className={`rounded-md text-xs bg-${colors[status]}  text-${
-        colors[status]
-      } ${
+      className={`font-bold capitalize self-end  py-3 min-w-28 flex items-center justify-center rounded-md text-xs md:self-auto bg-opacity-10 dark:bg-opacity-10 ${
         status === 'draft'
-          ? 'dark:bg-blue-100 dark:bg-opacity-10  dark:text-blue-100'
-          : null
-      } bg-opacity-10 font-bold capitalize self-end  py-3 min-w-28 flex items-center justify-center md:self-auto`}
+          ? 'bg-dark-200 text-dark-200 dark:bg-blue-100   dark:text-blue-100'
+          : status === 'pending'
+          ? 'bg-orange text-orange'
+          : status === 'paid' && 'text-green bg-green'
+      } `}
     >
       <span className='text-base mr-2'>
         <GoPrimitiveDot />

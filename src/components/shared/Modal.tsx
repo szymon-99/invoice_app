@@ -5,6 +5,7 @@ import { scaleUp } from '@utils/motionVariants';
 import { Button } from '@shared';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { formatID } from '@utils/helpers';
 
 const Modal = () => {
   const { closeModal, deleteInvoice, startUpdating } = useActions();
@@ -33,7 +34,7 @@ const Modal = () => {
             <h3 className=' text-xl md:text-2xl'>Confirm Deletion</h3>
             <p>
               Are you sure you want to delete invoice
-              <span> #{currentInvoice._id.substr(0, 6).toUpperCase()}? </span>
+              <span> {formatID(currentInvoice._id)}? </span>
               This action cannot be undone.
             </p>
             <div className='flex justify-end space-x-2'>

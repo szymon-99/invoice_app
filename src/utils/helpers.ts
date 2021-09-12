@@ -12,3 +12,7 @@ export const handleClickOutside = <T extends Element>(
 export const formatDate = (date: Date): string => {
   return date.toUTCString().split(' ').splice(0, 3).join(' ').replace(',', '');
 };
+
+export const formatID = (id: string): string => {
+  return id.substr(id.length - 6, id.length).toUpperCase();
+};

@@ -14,9 +14,9 @@ const Button: FC<ButtonProps> = ({ children, type, callback, withSpinner }) => {
   return (
     <button
       onClick={() => callback()}
-      className={`btn ${
+      className={`btn relative ${
         isUpdating && 'pointer-events-none opacity-90'
-      } relative ${
+      }${
         type === 'danger'
           ? 'text-white bg-red-500 hover:bg-red-100'
           : type === 'primary'
