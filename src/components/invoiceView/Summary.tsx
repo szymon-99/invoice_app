@@ -47,7 +47,7 @@ const Summary: FC<SummaryProps> = ({ items }) => {
                 </p>
               </div>
               <p className='font-bold text-dark-900 dark:text-white'>
-                {Number(qty) * Number(price)}
+                {(Number(qty) * Number(price)).toFixed(2)}
               </p>
             </div>
           );
