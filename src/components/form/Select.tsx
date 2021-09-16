@@ -1,21 +1,21 @@
-import { FC } from 'react';
-import { useField } from 'formik';
+import { FC } from 'react'
+import { useField } from 'formik'
 
 interface SelectProps {
-  options: string[];
-  label: string;
-  name: string;
+  options: string[]
+  label: string
+  name: string
 }
 
 const Select: FC<SelectProps> = ({ options, label, ...props }) => {
-  const [field, meta] = useField({ ...props, type: 'select' });
+  const [field, meta] = useField({ ...props, type: 'select' })
 
   return (
     <div className='mt-4'>
       <div className='flex justify-between'>
         <label
           htmlFor={field.name}
-          className=' font-medium capitalize text-blue-600 dark:text-blue-100 text-xs'
+          className=' font-medium pt-1 capitalize text-blue-600 dark:text-blue-100 text-xs'
         >
           {label}
         </label>
@@ -36,11 +36,11 @@ const Select: FC<SelectProps> = ({ options, label, ...props }) => {
             <option key={value} value={value} label={value}>
               {value}
             </option>
-          );
+          )
         })}
       </select>
     </div>
-  );
-};
+  )
+}
 
-export default Select;
+export default Select

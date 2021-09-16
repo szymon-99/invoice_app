@@ -1,21 +1,21 @@
-import Input from './Input';
-import Select from './Select';
-import { Form } from 'formik';
-import ItemList from './ItemList';
-import { paymentOptions } from '@utils/constants';
-import { Back } from '@shared';
-import { FC } from 'react';
-import { useAppSelector } from '@hooks';
-import { formatID } from '@utils/helpers';
+import Input from './Input'
+import Select from './Select'
+import { Form } from 'formik'
+import ItemList from './ItemList'
+import { paymentOptions } from '@utils/constants'
+import { Back } from '@shared'
+import { FC } from 'react'
+import { useAppSelector } from '@hooks'
+import { formatID } from '@utils/helpers'
 
 interface FormStructureProps {
-  edit?: true;
+  edit?: true
 }
 
 const FormStructure: FC<FormStructureProps> = ({ edit }) => {
-  const { currentInvoice } = useAppSelector();
+  const { currentInvoice } = useAppSelector()
   return (
-    <div className='px-6 pt-8 pb-24 max-h-full overflow-scroll md:px-14'>
+    <div className='px-6 pt-8 pb-8 max-h-full overflow-scroll md:px-14'>
       <Back form />
 
       <h1 className='mt-6'>
@@ -69,7 +69,7 @@ const FormStructure: FC<FormStructureProps> = ({ edit }) => {
         <ItemList />
       </Form>
     </div>
-  );
-};
+  )
+}
 
-export default FormStructure;
+export default FormStructure

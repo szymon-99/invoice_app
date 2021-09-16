@@ -1,19 +1,19 @@
-import { useField } from 'formik';
-import { FC } from 'react';
+import { useField } from 'formik'
+import { FC } from 'react'
 
 interface TextInputProps {
-  label: string;
-  name: string;
-  placeholder?: string;
-  type?: 'email' | 'number' | 'date';
-  itemList?: true;
+  label: string
+  name: string
+  placeholder?: string
+  type?: 'email' | 'number' | 'date'
+  itemList?: true
 }
 
 const TextInput: FC<TextInputProps> = ({ label, itemList, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field, meta] = useField(props)
 
   return (
-    <div className={` mt-4 ${itemList && 'md:mt-0'}`}>
+    <div className={` mt-4 ${itemList ? 'md:mt-0' : ''}`}>
       <div className='flex justify-between'>
         <label
           htmlFor={field.name}
@@ -40,7 +40,7 @@ const TextInput: FC<TextInputProps> = ({ label, itemList, ...props }) => {
         {...field}
       />
     </div>
-  );
-};
+  )
+}
 
-export default TextInput;
+export default TextInput
