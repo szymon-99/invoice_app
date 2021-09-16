@@ -3,6 +3,7 @@
 [LIVE DEMO OF THIS APP HERE](https://invoice-app-demo.netlify.app/#/)
 
 This is a fullstack app where user can create, update and delete invoices. 
+The design comes from [frontendmentor](https://www.frontendmentor.io/) but application was created only by myself.
 
 ### Functionallities
 
@@ -29,6 +30,7 @@ Server is hosted on heroku.
 - express
 - postman
 - react
+- typescript
 - framer-motion
 - tailwindcss
 - formik
