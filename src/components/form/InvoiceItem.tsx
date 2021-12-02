@@ -1,26 +1,22 @@
-import { FC } from 'react';
-import { FaTrash } from 'react-icons/fa';
-import Input from './Input';
-import { ErrorMessage, useFormikContext } from 'formik';
-import { motion } from 'framer-motion';
-import { slideUp } from '@utils/motionVariants';
-import { InvoiceClientInformations } from '../../../types';
+import { FC } from 'react'
+import { FaTrash } from 'react-icons/fa'
+import Input from './Input'
+import { ErrorMessage, useFormikContext } from 'formik'
+import { motion } from 'framer-motion'
+import { slideUp } from '@utils/motionVariants'
+import { InvoiceClientInformations } from '../../../types'
 
 interface InvoiceItemProps {
-  index: number;
-  remove: (index: number) => void;
+  index: number
+  remove: (index: number) => void
   values: {
-    qty: string;
-    price: string;
-  };
+    qty: string
+    price: string
+  }
 }
 
-const InvoiceItem: FC<InvoiceItemProps> = ({
-  remove,
-  index,
-  values: { price, qty },
-}) => {
-  const { values } = useFormikContext<InvoiceClientInformations>();
+const InvoiceItem: FC<InvoiceItemProps> = ({ remove, index, values: { price, qty } }) => {
+  const { values } = useFormikContext<InvoiceClientInformations>()
 
   return (
     <motion.div
@@ -33,24 +29,14 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
         <Input itemList label='item name' name={`itemList[${index}].name`} />
       </div>
       <div className=' col-span-3 md:col-span-2'>
-        <Input
-          itemList
-          label='Qty'
-          type='number'
-          name={`itemList[${index}].qty`}
-        />
+        <Input itemList label='Qty' type='number' name={`itemList[${index}].qty`} />
       </div>
       <div className='col-span-3 md:col-span-3'>
-        <Input
-          itemList
-          label='Price'
-          type='number'
-          name={`itemList[${index}].price`}
-        />
+        <Input itemList label='Price' type='number' name={`itemList[${index}].price`} />
       </div>
       <div className='text-xs  text-gray font-bold dark:text-light col-span-2 grid  md:col-span-2'>
         <span className='mt-4 md:hidden'>Total</span>
-        <span className='mt-2  md:mt-6 overflow-scroll'>
+        <span className='mt-2  md:mt-6 overflow-hidden overflow-ellipsis'>
           {(Number(qty) * Number(price)).toFixed(2)}
         </span>
       </div>
@@ -71,15 +57,11 @@ const InvoiceItem: FC<InvoiceItemProps> = ({
         <ErrorMessage name={`itemList[${index}.price]`} component={ItemError} />
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
 const ItemError: FC = ({ children }) => {
-  return (
-    <p className='text-xs font-bold text-red-500 dark:text-red-500'>
-      {children}
-    </p>
-  );
-};
+  return <p className='text-xs font-bold text-red-500 dark:text-red-500'>{children}</p>
+}
 
-export default InvoiceItem;
+export default InvoiceItem

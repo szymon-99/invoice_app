@@ -24,9 +24,7 @@ const TextInput: FC<TextInputProps> = ({ label, itemList, ...props }) => {
         </label>
 
         {!itemList && meta.touched && meta.error ? (
-          <p className='text-red-500 dark:text-red-500 font-light text-xxs'>
-            {meta.error}
-          </p>
+          <p className='text-red-500 dark:text-red-500 font-light text-xxs'>{meta.error}</p>
         ) : null}
       </div>
       <input
@@ -36,6 +34,7 @@ const TextInput: FC<TextInputProps> = ({ label, itemList, ...props }) => {
             : 'border-blue-100 dark:border-dark-100 hover:border-blue-500 dark:hover:border-blue-500 focus:ring-blue-100 dark:focus:ring-blue-500'
         }`}
         type={props.type || 'text'}
+        {...(props.type === 'number' ? { min: 0 } : null)}
         {...props}
         {...field}
       />

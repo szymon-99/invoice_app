@@ -15,14 +15,13 @@ interface FormStructureProps {
 const FormStructure: FC<FormStructureProps> = ({ edit }) => {
   const { currentInvoice } = useAppSelector()
   return (
-    <div className='px-6 pt-8 pb-8 max-h-full overflow-scroll md:px-14'>
+    <div className='px-6 pt-8 pb-8 max-h-full overflow-y-scroll md:px-14'>
       <Back form />
 
       <h1 className='mt-6'>
         {edit && currentInvoice ? (
           <>
-            Edit <span className='text-fontSecondary'>#</span>$
-            {formatID(currentInvoice._id)}
+            Edit <span className='text-fontSecondary'>#</span>${formatID(currentInvoice._id)}
           </>
         ) : (
           'New invoice'
@@ -56,11 +55,7 @@ const FormStructure: FC<FormStructureProps> = ({ edit }) => {
           </div>
           <div className='grid grid-cols-2 gap-3 md:gap-6'>
             <Input name='createdAt' label='invoice date' type='date' />
-            <Select
-              name='paymentDue'
-              options={paymentOptions}
-              label='payment terms'
-            />
+            <Select name='paymentDue' options={paymentOptions} label='payment terms' />
           </div>
         </div>
         <Input name='desc' label='project Desc' />

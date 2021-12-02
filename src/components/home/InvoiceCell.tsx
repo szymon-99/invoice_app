@@ -1,24 +1,17 @@
-import { Status } from '@shared';
-import { useHistory } from 'react-router-dom';
-import { FiChevronRight } from 'react-icons/fi';
-import { FC } from 'react';
-import { InvoiceBasicInfo } from '../../../types';
-import { motion } from 'framer-motion';
-import { formatID } from '@utils/helpers';
+import { Status } from '@shared'
+import { useHistory } from 'react-router-dom'
+import { FiChevronRight } from 'react-icons/fi'
+import { FC } from 'react'
+import { InvoiceBasicInfo } from '../../../types'
+import { motion } from 'framer-motion'
+import { formatID } from '@utils/helpers'
 
 interface InvoiceCellProps extends InvoiceBasicInfo {
-  index: number;
+  index: number
 }
 
-const InvoiceCell: FC<InvoiceCellProps> = ({
-  id,
-  name,
-  status,
-  total,
-  date,
-  index,
-}) => {
-  const history = useHistory();
+const InvoiceCell: FC<InvoiceCellProps> = ({ id, name, status, total, date, index }) => {
+  const history = useHistory()
 
   return (
     <motion.li
@@ -52,21 +45,16 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         <p className=' md:hidden break-all'>{name}</p>
       </div>
 
-      <div className='mt-6 flex justify-between items-center md:ml-7 md:mt-0 md:grid  md:grid-cols-12 md:gap-8  '>
-        <div className='grid  md:col-span-9 md:flex md:items-center md:space-x-8'>
-          <p className=' min-w-max md:justify-self-start'>
+      <div className='mt-6 flex justify-between items-center md:ml-7 md:mt-0 md:grid  md:grid-cols-12   '>
+        <div className='grid  md:col-span-9 md:flex md:items-center md:space-x-8 md:mr-8'>
+          <p className=' min-w-max md:justify-self-start md:w-3/12'>
             <span>Due </span>
-            {new Date(date)
-              .toUTCString()
-              .split(' ')
-              .splice(0, 3)
-              .join(' ')
-              .replace(',', '')}
+            {new Date(date).toUTCString().split(' ').splice(0, 3).join(' ').replace(',', '')}
           </p>
-          <p className='hidden text-fontSecondary md:block md:flex-grow overflow-x-scroll'>
+          <p className='hidden text-fontSecondary md:block overflow-ellipsis overflow-hidden md:w-6/12'>
             {name}
           </p>
-          <p className=' mt-2 font-bold text-sm lg:text-base text-fontPrimary md:mt-0 overflow-x-scroll'>
+          <p className=' mt-2 font-bold text-sm lg:text-base text-fontPrimary md:mt-0 md:w-4/12  overflow-hidden overflow-ellipsis '>
             {`$${total.toFixed(2)}`}
           </p>
         </div>
@@ -77,7 +65,7 @@ const InvoiceCell: FC<InvoiceCellProps> = ({
         <FiChevronRight />
       </span>
     </motion.li>
-  );
-};
+  )
+}
 
-export default InvoiceCell;
+export default InvoiceCell
